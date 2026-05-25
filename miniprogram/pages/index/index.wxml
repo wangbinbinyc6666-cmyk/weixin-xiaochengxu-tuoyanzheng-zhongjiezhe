@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- Pixel Coach Header -->
+  <view class="header">
+    <view class="coach-wrapper">
+      <view class="coach-pixel">
+        <image class="coach-img" src="/images/coach-avatar.png" mode="aspectFill"></image>
+      </view>
+      <text class="coach-name">W 教练</text>
+    </view>
+    <text class="greeting">你想搞定哪件事？</text>
+  </view>
+
+  <!-- Input Area -->
+  <view class="input-section">
+    <textarea
+      class="task-input"
+      placeholder="躺在床上想事情，没有回复客户的消息..."
+      placeholder-class="input-placeholder"
+      value="{{task}}"
+      bindinput="onInput"
+      maxlength="200"
+      auto-height
+    />
+    <view class="char-count">{{task.length}}/200</view>
+  </view>
+
+  <!-- Submit Button -->
+  <view class="submit-btn {{loading ? 'loading' : ''}}" bindtap="onSubmit">
+    <view wx:if="{{!loading}}" class="btn-content">
+      <text class="btn-icon">⚡</text>
+      <text class="btn-text">创建计划</text>
+    </view>
+    <view wx:else class="loading-content">
+      <text class="loading-coach">W 教练正在为你准备最优计划...</text>
+    </view>
+  </view>
+
+  <!-- Recent Plans -->
+  <view class="recent-section" wx:if="{{recentPlans.length > 0}}">
+    <view class="section-title">今日计划</view>
+    <view
+      class="recent-item"
+      wx:for="{{recentPlans}}"
+      wx:key="_id"
+      bindtap="onTapPlan"
+      data-id="{{item._id}}"
+    >
+      <view class="recent-task">{{item.task}}</view>
+      <view class="recent-meta">
+        <text class="recent-steps">{{item.steps.length}} 个步骤</text>
+        <text class="recent-status {{item.status}}">
+          {{item.status === 'completed' ? '已完成' : (item.status === 'ongoing' ? '进行中' : '已放弃')}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Empty State -->
+  <view class="empty-state" wx:if="{{!loading && recentPlans.length === 0}}">
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">还没有计划，开始第一个吧</text>
+  </view>
+</view>

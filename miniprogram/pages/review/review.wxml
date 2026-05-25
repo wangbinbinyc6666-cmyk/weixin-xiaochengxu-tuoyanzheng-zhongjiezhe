@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- Today Stats -->
+  <view class="today-card">
+    <view class="today-title">今日战绩</view>
+    <view class="today-stats">
+      <view class="stat-item">
+        <text class="stat-number">{{todayData.completionRate}}%</text>
+        <text class="stat-label">完成率</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number accent">{{todayData.completedPlans}}</text>
+        <text class="stat-label">已完成</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number warning">{{todayData.ongoingPlans}}</text>
+        <text class="stat-label">进行中</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Progress Ring -->
+  <view class="ring-section">
+    <view class="ring-container">
+      <view class="ring-bg"></view>
+      <view class="ring-fill" style="background: conic-gradient(#7ED321 0deg {{todayData.completionRate * 3.6}}deg, #F0F0F0 {{todayData.completionRate * 3.6}}deg 360deg);"></view>
+      <view class="ring-inner">
+        <text class="ring-number">{{todayData.totalSteps}}</text>
+        <text class="ring-label">总步骤</text>
+      </view>
+    </view>
+    <view class="ring-details">
+      <view class="detail-row">
+        <view class="detail-dot complete"></view>
+        <text>完成 {{todayData.completedSteps}} 步</text>
+      </view>
+      <view class="detail-row">
+        <view class="detail-dot skip"></view>
+        <text>跳过 {{todayData.skippedSteps}} 步</text>
+      </view>
+      <view class="detail-row">
+        <view class="detail-dot pending"></view>
+        <text>待处理 {{todayData.totalSteps - todayData.completedSteps - todayData.skippedSteps}} 步</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Weekly Trend -->
+  <view class="trend-section" wx:if="{{weeklyTrend.length > 0}}">
+    <view class="section-title">近7天趋势</view>
+    <view class="trend-chart">
+      <view class="bar-item" wx:for="{{weeklyTrend}}" wx:key="date">
+        <view class="bar-wrap">
+          <view class="bar-fill" style="height: {{item.completionRate}}%"></view>
+        </view>
+        <text class="bar-label">{{item.date.slice(5)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Today's Plans -->
+  <view class="plans-section" wx:if="{{todayPlans.length > 0}}">
+    <view class="section-title">今日计划详情</view>
+    <view class="plan-item" wx:for="{{todayPlans}}" wx:key="_id" bindtap="onTapPlan" data-id="{{item._id}}">
+      <view class="plan-item-task">{{item.task}}</view>
+      <view class="plan-item-meta">
+        <text>{{item.steps.length}} 步骤</text>
+        <text class="plan-item-status {{item.status}}">
+          {{item.status === 'completed' ? '已完成' : (item.status === 'ongoing' ? '进行中' : '已放弃')}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Empty -->
+  <view class="empty-state" wx:if="{{!loading && todayData.totalPlans === 0}}">
+    <text class="empty-icon">📊</text>
+    <text class="empty-text">今天还没有计划，去首页创建一个吧</text>
+  </view>
+</view>

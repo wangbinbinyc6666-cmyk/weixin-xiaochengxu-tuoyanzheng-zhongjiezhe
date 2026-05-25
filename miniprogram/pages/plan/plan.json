@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "step-card": "/components/stepCard/stepCard"
+  },
+  "navigationBarTitleText": "计划详情"
+}

@@ -1,0 +1,28 @@
+<view class="step-card {{completed ? 'completed' : ''}} {{skipped ? 'skipped' : ''}}">
+  <view class="step-header">
+    <view class="step-icon">{{step.icon || '📋'}}</view>
+    <view class="step-content">
+      <view class="step-title">{{step.content}}</view>
+    </view>
+    <view class="step-badge" wx:if="{{completed}}">✓</view>
+    <view class="step-badge skip" wx:if="{{skipped}}">→</view>
+  </view>
+  <view class="step-meta">
+    <text class="step-estimate">⏱ 预估 {{step.estimate_minutes}} 分钟</text>
+    <text wx:if="{{step.actual_minutes > 0}}" class="step-actual">实际 {{step.actual_minutes}} 分钟</text>
+  </view>
+  <view class="step-actions" wx:if="{{!completed && !skipped}}">
+    <button class="btn-complete" bindtap="onComplete" data-index="{{index}}">
+      <text class="btn-icon">✓</text> 完成
+    </button>
+    <button class="btn-skip" bindtap="onSkip" data-index="{{index}}">
+      <text class="btn-icon">→</text> 跳过
+    </button>
+  </view>
+  <view class="step-status" wx:if="{{completed}}">
+    <text class="status-complete">✓ 已完成 · 执行力 +2 · 咖啡豆 +1</text>
+  </view>
+  <view class="step-status" wx:if="{{skipped}}">
+    <text class="status-skipped">→ 已跳过</text>
+  </view>
+</view>
