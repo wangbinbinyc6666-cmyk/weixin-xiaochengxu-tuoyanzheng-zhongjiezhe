@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- Profile Card -->
+  <view class="profile-card">
+    <view class="avatar">🤖</view>
+    <view class="profile-info">
+      <text class="profile-name">拖延症终结者</text>
+      <text class="profile-desc">每完成一个小步骤，就打败一次拖延</text>
+    </view>
+  </view>
+
+  <!-- Stats Grid -->
+  <view class="stats-grid">
+    <view class="stat-card">
+      <text class="stat-num">{{allTimeStats.completedPlans}}</text>
+      <text class="stat-desc">累计完成计划</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{allTimeStats.totalPlans}}</text>
+      <text class="stat-desc">总发起计划</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{allTimeStats.streak}}🔥</text>
+      <text class="stat-desc">连续打卡天数</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{allTimeStats.completionRate}}%</text>
+      <text class="stat-desc">总完成率</text>
+    </view>
+  </view>
+
+  <!-- Recent Plans -->
+  <view class="recent-section" wx:if="{{recentPlans.length > 0}}">
+    <view class="section-title">最近计划</view>
+    <view
+      class="plan-item"
+      wx:for="{{recentPlans}}"
+      wx:key="_id"
+      bindtap="onTapPlan"
+      data-id="{{item._id}}"
+    >
+      <view class="plan-item-task">{{item.task}}</view>
+      <view class="plan-item-meta">
+        <text>{{item.steps.length}} 步骤</text>
+        <text class="plan-item-status {{item.status}}">
+          {{item.status === 'completed' ? '已完成' : (item.status === 'ongoing' ? '进行中' : '已放弃')}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Settings -->
+  <view class="settings-section">
+    <view class="section-title">设置</view>
+    <view class="setting-item" bindtap="onClearData">
+      <text>清除所有数据</text>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="onAbout">
+      <text>关于</text>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- Loading -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

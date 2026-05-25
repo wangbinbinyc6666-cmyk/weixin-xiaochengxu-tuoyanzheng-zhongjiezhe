@@ -1,0 +1,240 @@
+.container {
+  padding: 32rpx;
+  position: relative;
+}
+
+/* Reward Toast */
+.reward-toast {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  padding-top: 120rpx;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-40rpx);
+  transition: all 0.4s ease;
+}
+
+.reward-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reward-content {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border-radius: 40rpx;
+  padding: 16rpx 40rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 165, 0, 0.4);
+}
+
+.reward-thumb {
+  font-size: 40rpx;
+}
+
+.reward-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* Plan Header */
+.plan-header {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.plan-header.stamped {
+  overflow: hidden;
+}
+
+.plan-task-label {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.plan-task {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 24rpx;
+}
+
+.plan-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12rpx;
+  background: #F0F0F0;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4A90E2, #7ED321);
+  border-radius: 6rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* Completion Stamp */
+.completion-stamp {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  z-index: 10;
+  transform: rotate(-15deg);
+}
+
+.stamp-border {
+  border: 6rpx solid #E74C3C;
+  border-radius: 16rpx;
+  padding: 12rpx 20rpx;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.stamp-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #E74C3C;
+  line-height: 1.2;
+}
+
+.stamp-date {
+  display: block;
+  font-size: 20rpx;
+  color: #E74C3C;
+  margin-top: 2rpx;
+}
+
+.stamp-time {
+  display: block;
+  font-size: 20rpx;
+  color: #E74C3C;
+}
+
+/* Ribbons */
+.ribbons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.ribbon {
+  font-size: 44rpx;
+}
+
+.ribbon-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #E74C3C;
+}
+
+/* Coach Message */
+.coach-msg {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 24rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.coach-emoji {
+  font-size: 44rpx;
+}
+
+.coach-text {
+  font-size: 26rpx;
+  color: #666666;
+  flex: 1;
+}
+
+/* Steps */
+.steps-section {
+  margin-top: 16rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 24rpx;
+}
+
+/* Completion Banner */
+.completion-banner {
+  background: linear-gradient(135deg, #FFFFFF, #FFFDE8);
+  border-radius: 16rpx;
+  padding: 48rpx 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  margin-top: 32rpx;
+  border: 2rpx solid #FFD700;
+}
+
+.banner-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.banner-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 8rpx;
+  text-align: center;
+}
+
+.banner-sub {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 32rpx;
+}
+
+.banner-btn {
+  background: #4A90E2;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  padding: 16rpx 64rpx;
+  border-radius: 40rpx;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+  font-size: 28rpx;
+  color: #999999;
+  gap: 24rpx;
+}

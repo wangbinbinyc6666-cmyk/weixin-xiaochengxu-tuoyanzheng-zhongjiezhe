@@ -1,0 +1,77 @@
+<view class="container">
+  <!-- Reward Toast -->
+  <view class="reward-toast {{showReward ? 'show' : ''}}" wx:if="{{showReward}}">
+    <view class="reward-content">
+      <text class="reward-thumb">👍</text>
+      <text class="reward-text">执行力 +2 · 咖啡豆 +1</text>
+    </view>
+  </view>
+
+  <!-- Plan Header with Stamp Overlay -->
+  <view class="plan-header {{plan && plan.status === 'completed' ? 'stamped' : ''}}" wx:if="{{plan}}">
+    <!-- Completion Stamp -->
+    <view class="completion-stamp" wx:if="{{plan.status === 'completed'}}">
+      <view class="stamp-border">
+        <text class="stamp-title">已完成</text>
+        <text class="stamp-date">{{completionDate}}</text>
+        <text class="stamp-time">{{completionTime}}</text>
+      </view>
+    </view>
+
+    <!-- Celebration Ribbons -->
+    <view class="ribbons" wx:if="{{plan.status === 'completed'}}">
+      <text class="ribbon">🎊</text>
+      <text class="ribbon-title">你已完成任务!!</text>
+      <text class="ribbon">🎊</text>
+    </view>
+
+    <view class="plan-task-label">困扰</view>
+    <view class="plan-task">{{plan.task}}</view>
+    <view class="plan-progress">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{completionPercent}}%"></view>
+      </view>
+      <text class="progress-text">{{handledCount}}/{{totalSteps}} 已完成</text>
+    </view>
+  </view>
+
+  <!-- Coach Encouragement -->
+  <view class="coach-msg" wx:if="{{plan && plan.status !== 'completed'}}">
+    <text class="coach-emoji">💪</text>
+    <text class="coach-text">{{encouragement}}</text>
+  </view>
+
+  <!-- Steps List -->
+  <view class="steps-section" wx:if="{{plan && plan.steps}}">
+    <view class="section-title">执行步骤</view>
+    <step-card
+      wx:for="{{plan.steps}}"
+      wx:key="index"
+      step="{{item}}"
+      index="{{index}}"
+      completed="{{completedSteps.indexOf(index) > -1}}"
+      skipped="{{skippedSteps.indexOf(index) > -1}}"
+      bind:complete="onStepComplete"
+      bind:skip="onStepSkip"
+    />
+  </view>
+
+  <!-- Completion Banner -->
+  <view class="completion-banner" wx:if="{{plan && plan.status === 'completed'}}">
+    <text class="banner-icon">🏆</text>
+    <text class="banner-title">太棒了，拖延症被你打败了一次！</text>
+    <text class="banner-sub">今日又向前迈进了一步</text>
+    <button class="banner-btn" bindtap="onBackHome">返回首页</button>
+  </view>
+
+  <!-- Loading -->
+  <view class="loading-state" wx:if="{{!plan && loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- Not Found -->
+  <view class="loading-state" wx:if="{{!plan && !loading}}">
+    <text>计划不存在</text>
+    <button class="banner-btn" bindtap="onBackHome">返回首页</button>
+  </view>
+</view>
