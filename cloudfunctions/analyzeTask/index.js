@@ -72,9 +72,13 @@ function httpRequest(url, options, body) {
   });
 }
 
+// 从环境变量读取密钥（在微信云开发控制台「环境设置-环境变量」中配置）
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const WX_APPID = process.env.WX_APPID;
+const WX_APPSECRET = process.env.WX_APPSECRET;
+
 async function callDeepSeek(task) {
-  const apiKey = process.env.DEEPSEEK_API_KEY;
-  if (!apiKey) {
+  if (!DEEPSEEK_API_KEY) {
     throw new Error("DeepSeek API Key 未配置");
   }
 
@@ -94,7 +98,7 @@ async function callDeepSeek(task) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
         "Content-Length": Buffer.byteLength(body),
       },
     },

@@ -1,0 +1,11 @@
+# 环境变量（包含敏感信息，不可提交到仓库）
+.env
+
+# 微信开发者工具生成
+project.private.config.json
+
+# 依赖
+node_modules/
+
+# 日志
+*.log
