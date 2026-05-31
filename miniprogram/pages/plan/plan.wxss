@@ -16,7 +16,7 @@
   pointer-events: none;
   opacity: 0;
   transform: translateY(-40rpx);
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .reward-toast.show {
@@ -25,13 +25,13 @@
 }
 
 .reward-content {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: #F39C12;
   border-radius: 40rpx;
   padding: 16rpx 40rpx;
   display: flex;
   align-items: center;
   gap: 12rpx;
-  box-shadow: 0 8rpx 24rpx rgba(255, 165, 0, 0.4);
+  box-shadow: 0 8rpx 24rpx rgba(243, 156, 18, 0.4);
 }
 
 .reward-thumb {
@@ -44,191 +44,224 @@
   color: #FFFFFF;
 }
 
-/* Plan Header */
-.plan-header {
+/* Coach Greeting */
+.coach-greeting {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  padding-bottom: 24rpx;
+}
+
+.coach-avatar-small {
+  width: 128rpx;
+  height: 128rpx;
+  flex-shrink: 0;
+}
+
+.speech-bubble {
   background: #FFFFFF;
-  border-radius: 16rpx;
+  border-radius: 24rpx;
+  padding: 24rpx 32rpx;
+  font-size: 28rpx;
+  color: #1A1A1A;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  position: relative;
+  line-height: 1.6;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16rpx;
+  top: 20rpx;
+  width: 0;
+  height: 0;
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  border-right: 16rpx solid #FFFFFF;
+}
+
+/* Plan Card */
+.plan-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
-  position: relative;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.plan-header.stamped {
-  overflow: hidden;
-}
-
-.plan-task-label {
+.plan-hint {
   font-size: 24rpx;
   color: #999999;
-  margin-bottom: 8rpx;
+  text-align: center;
+  padding-bottom: 16rpx;
+  margin-bottom: 16rpx;
+  border-bottom: 2rpx solid #E0E0E0;
 }
 
 .plan-task {
   font-size: 32rpx;
   font-weight: 600;
-  color: #333333;
+  color: #1A1A1A;
   line-height: 1.5;
-  margin-bottom: 24rpx;
 }
 
-.plan-progress {
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 12rpx;
-  background: #F0F0F0;
-  border-radius: 6rpx;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4A90E2, #7ED321);
-  border-radius: 6rpx;
-  transition: width 0.3s ease;
-}
-
-.progress-text {
-  font-size: 24rpx;
-  color: #999999;
-}
-
-/* Completion Stamp */
-.completion-stamp {
-  position: absolute;
-  top: 20rpx;
-  right: 30rpx;
-  z-index: 10;
-  transform: rotate(-15deg);
-}
-
-.stamp-border {
-  border: 6rpx solid #E74C3C;
-  border-radius: 16rpx;
-  padding: 12rpx 20rpx;
-  text-align: center;
-  opacity: 0.85;
-}
-
-.stamp-title {
-  display: block;
-  font-size: 36rpx;
-  font-weight: 900;
-  color: #E74C3C;
-  line-height: 1.2;
-}
-
-.stamp-date {
-  display: block;
-  font-size: 20rpx;
-  color: #E74C3C;
-  margin-top: 2rpx;
-}
-
-.stamp-time {
-  display: block;
-  font-size: 20rpx;
-  color: #E74C3C;
-}
-
-/* Ribbons */
-.ribbons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12rpx;
-  margin-bottom: 20rpx;
-}
-
-.ribbon {
-  font-size: 44rpx;
-}
-
-.ribbon-title {
-  font-size: 36rpx;
-  font-weight: 800;
-  color: #E74C3C;
-}
-
-/* Coach Message */
-.coach-msg {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  padding: 24rpx;
-  background: #FFFFFF;
-  border-radius: 16rpx;
-  margin-bottom: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
-}
-
-.coach-emoji {
-  font-size: 44rpx;
-}
-
-.coach-text {
-  font-size: 26rpx;
-  color: #666666;
-  flex: 1;
-}
-
-/* Steps */
+/* Steps Section */
 .steps-section {
   margin-top: 16rpx;
+  margin-bottom: 40rpx;
 }
 
 .section-title {
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 600;
-  color: #333333;
+  color: #1A1A1A;
   margin-bottom: 24rpx;
 }
 
-/* Completion Banner */
-.completion-banner {
-  background: linear-gradient(135deg, #FFFFFF, #FFFDE8);
-  border-radius: 16rpx;
-  padding: 48rpx 32rpx;
+/* Completion Dialog */
+.completion-dialog {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
-  margin-top: 32rpx;
-  border: 2rpx solid #FFD700;
+  justify-content: center;
+  padding: 0 0 24rpx;
 }
 
-.banner-icon {
-  font-size: 80rpx;
-  margin-bottom: 16rpx;
-}
-
-.banner-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #333333;
-  margin-bottom: 8rpx;
+.completion-bubble {
+  max-width: 80%;
   text-align: center;
+  font-size: 28rpx;
+  color: #1A1A1A;
+  line-height: 1.6;
 }
 
-.banner-sub {
-  font-size: 26rpx;
-  color: #999999;
+.completion-bubble::before {
+  display: none;
+}
+
+/* Completion: Full Body Coach */
+.coach-full {
+  display: flex;
+  justify-content: center;
+  padding: 32rpx 0 16rpx;
+}
+
+.coach-full-img {
+  width: 192rpx;
+  height: 192rpx;
+}
+
+/* Completion: Title */
+.completion-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  padding: 16rpx 0;
+}
+
+.confetti {
+  font-size: 48rpx;
+}
+
+.completion-title {
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+/* Completion: Status Bar */
+.status-bar {
+  text-align: center;
+  font-size: 32rpx;
+  color: #1A1A1A;
+  padding: 16rpx 0 32rpx;
+  font-weight: 500;
+}
+
+/* Completed Task List */
+.completed-tasks {
   margin-bottom: 32rpx;
 }
 
-.banner-btn {
-  background: #4A90E2;
-  color: #FFFFFF;
-  font-size: 28rpx;
-  padding: 16rpx 64rpx;
-  border-radius: 40rpx;
+.completed-task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+  overflow: hidden;
+}
+
+.task-icon {
+  font-size: 40rpx;
+  flex-shrink: 0;
+}
+
+.task-content {
+  font-size: 28rpx;
+  color: #666666;
+  text-decoration: line-through;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-stamp {
+  border: 4rpx solid #E74C3C;
+  color: #E74C3C;
+  font-size: 24rpx;
+  font-weight: 700;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+  transform: rotate(-5deg);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 24rpx;
+  padding: 16rpx 0;
+}
+
+.btn-reflection,
+.btn-new-start {
+  height: 96rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.btn-reflection {
+  background: #FFFFFF;
+  border: 4rpx solid #1A1A1A;
+  color: #1A1A1A;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-new-start {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading / Not Found */
 .loading-state {
   display: flex;
   flex-direction: column;
@@ -237,4 +270,13 @@
   font-size: 28rpx;
   color: #999999;
   gap: 24rpx;
+}
+
+.back-btn {
+  background: #FFFFFF;
+  border: 4rpx solid #1A1A1A;
+  color: #1A1A1A;
+  font-size: 28rpx;
+  padding: 16rpx 64rpx;
+  border-radius: 16rpx;
 }

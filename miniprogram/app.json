@@ -6,7 +6,7 @@
     "pages/me/me"
   ],
   "window": {
-    "backgroundColor": "#F8F9FA",
+    "backgroundColor": "#F5F5F5",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "拖延症终结者",
@@ -14,7 +14,7 @@
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#4A90E2",
+    "selectedColor": "#1A1A1A",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
     "list": [

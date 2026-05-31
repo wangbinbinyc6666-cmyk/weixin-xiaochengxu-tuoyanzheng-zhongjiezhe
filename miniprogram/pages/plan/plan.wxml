@@ -7,38 +7,18 @@
     </view>
   </view>
 
-  <!-- Plan Header with Stamp Overlay -->
-  <view class="plan-header {{plan && plan.status === 'completed' ? 'stamped' : ''}}" wx:if="{{plan}}">
-    <!-- Completion Stamp -->
-    <view class="completion-stamp" wx:if="{{plan.status === 'completed'}}">
-      <view class="stamp-border">
-        <text class="stamp-title">已完成</text>
-        <text class="stamp-date">{{completionDate}}</text>
-        <text class="stamp-time">{{completionTime}}</text>
-      </view>
-    </view>
-
-    <!-- Celebration Ribbons -->
-    <view class="ribbons" wx:if="{{plan.status === 'completed'}}">
-      <text class="ribbon">🎊</text>
-      <text class="ribbon-title">你已完成任务!!</text>
-      <text class="ribbon">🎊</text>
-    </view>
-
-    <view class="plan-task-label">困扰</view>
-    <view class="plan-task">{{plan.task}}</view>
-    <view class="plan-progress">
-      <view class="progress-bar">
-        <view class="progress-fill" style="width: {{completionPercent}}%"></view>
-      </view>
-      <text class="progress-text">{{handledCount}}/{{totalSteps}} 已完成</text>
+  <!-- Coach Greeting (ongoing state) -->
+  <view class="coach-greeting" wx:if="{{plan && plan.status !== 'completed'}}">
+    <image class="coach-avatar-small" src="/images/w-coach-avatar.png" mode="aspectFit"></image>
+    <view class="speech-bubble">
+      <text>{{encouragement}}</text>
     </view>
   </view>
 
-  <!-- Coach Encouragement -->
-  <view class="coach-msg" wx:if="{{plan && plan.status !== 'completed'}}">
-    <text class="coach-emoji">💪</text>
-    <text class="coach-text">{{encouragement}}</text>
+  <!-- Plan Card (ongoing state) -->
+  <view class="plan-card" wx:if="{{plan && plan.status !== 'completed'}}">
+    <view class="plan-hint">W教练 正在为你准备最优计划..</view>
+    <view class="plan-task">{{plan.task}}</view>
   </view>
 
   <!-- Steps List -->
@@ -56,13 +36,49 @@
     />
   </view>
 
-  <!-- Completion Banner -->
-  <view class="completion-banner" wx:if="{{plan && plan.status === 'completed'}}">
-    <text class="banner-icon">🏆</text>
-    <text class="banner-title">太棒了，拖延症被你打败了一次！</text>
-    <text class="banner-sub">今日又向前迈进了一步</text>
-    <button class="banner-btn" bindtap="onBackHome">返回首页</button>
-  </view>
+  <!-- Completion State -->
+  <block wx:if="{{plan && plan.status === 'completed'}}">
+    <!-- Completion Dialog -->
+    <view class="completion-dialog">
+      <view class="speech-bubble completion-bubble">
+        <text>项目文件夹已创建，恭喜你迈出了坚实的第一步！</text>
+      </view>
+    </view>
+
+    <!-- Full Body Coach -->
+    <view class="coach-full">
+      <image class="coach-full-img" src="/images/w-coach-full.png" mode="aspectFit"></image>
+    </view>
+
+    <!-- Completion Title -->
+    <view class="completion-title-row">
+      <text class="confetti">🎉</text>
+      <text class="completion-title">你已完成任务!!</text>
+      <text class="confetti">🎉</text>
+    </view>
+
+    <!-- Status Bar -->
+    <view class="status-bar">
+      <text>✅ {{completedSteps.length}}/{{totalSteps}}  ⏱️ {{completionDuration}}</text>
+    </view>
+
+    <!-- Completed Task List -->
+    <view class="completed-tasks">
+      <view class="completed-task-item" wx:for="{{plan.steps}}" wx:key="index">
+        <view class="task-left">
+          <text class="task-icon">{{item.icon || '📋'}}</text>
+          <text class="task-content">{{item.content}}</text>
+        </view>
+        <view class="task-stamp">已完成</view>
+      </view>
+    </view>
+
+    <!-- Action Buttons -->
+    <view class="action-buttons">
+      <view class="btn-reflection" bindtap="onReflection">感想</view>
+      <view class="btn-new-start" bindtap="onBackHome">开始新的</view>
+    </view>
+  </block>
 
   <!-- Loading -->
   <view class="loading-state" wx:if="{{!plan && loading}}">
@@ -72,6 +88,6 @@
   <!-- Not Found -->
   <view class="loading-state" wx:if="{{!plan && !loading}}">
     <text>计划不存在</text>
-    <button class="banner-btn" bindtap="onBackHome">返回首页</button>
+    <view class="back-btn" bindtap="onBackHome">返回首页</view>
   </view>
 </view>

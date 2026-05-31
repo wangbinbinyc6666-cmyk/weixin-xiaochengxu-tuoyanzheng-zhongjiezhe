@@ -3,8 +3,8 @@
 }
 
 .today-card {
-  background: linear-gradient(135deg, #4A90E2, #5BA3F5);
-  border-radius: 16rpx;
+  background: #1A1A1A;
+  border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 32rpx;
   color: #FFFFFF;
@@ -33,11 +33,11 @@
 }
 
 .stat-number.accent {
-  color: #7ED321;
+  color: #2ECC71;
 }
 
 .stat-number.warning {
-  color: #F5A623;
+  color: #F39C12;
 }
 
 .stat-label {
@@ -48,10 +48,10 @@
 
 .ring-section {
   background: #FFFFFF;
-  border-radius: 16rpx;
+  border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   gap: 48rpx;
@@ -97,7 +97,7 @@
 .ring-number {
   font-size: 40rpx;
   font-weight: 700;
-  color: #333333;
+  color: #1A1A1A;
 }
 
 .ring-label {
@@ -128,11 +128,11 @@
 }
 
 .detail-dot.complete {
-  background: #7ED321;
+  background: #2ECC71;
 }
 
 .detail-dot.skip {
-  background: #F5A623;
+  background: #F39C12;
 }
 
 .detail-dot.pending {
@@ -141,16 +141,16 @@
 
 .trend-section {
   background: #FFFFFF;
-  border-radius: 16rpx;
+  border-radius: 24rpx;
   padding: 24rpx;
   margin-bottom: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .section-title {
   font-size: 30rpx;
   font-weight: 600;
-  color: #333333;
+  color: #1A1A1A;
   margin-bottom: 24rpx;
 }
 
@@ -181,7 +181,7 @@
 
 .bar-fill {
   width: 100%;
-  background: linear-gradient(180deg, #7ED321, #4A90E2);
+  background: linear-gradient(180deg, #2ECC71, #1A1A1A);
   border-radius: 8rpx;
   min-height: 4rpx;
   transition: height 0.3s ease;
@@ -199,15 +199,15 @@
 
 .plan-item {
   background: #FFFFFF;
-  border-radius: 16rpx;
+  border-radius: 24rpx;
   padding: 24rpx;
   margin-bottom: 16rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .plan-item-task {
   font-size: 28rpx;
-  color: #333333;
+  color: #1A1A1A;
   margin-bottom: 12rpx;
 }
 
@@ -219,15 +219,15 @@
 }
 
 .plan-item-status.completed {
-  color: #7ED321;
+  color: #2ECC71;
 }
 
 .plan-item-status.ongoing {
-  color: #4A90E2;
+  color: #1A1A1A;
 }
 
 .plan-item-status.abandoned {
-  color: #F5A623;
+  color: #F39C12;
 }
 
 .empty-state {

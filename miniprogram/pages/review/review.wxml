@@ -22,7 +22,7 @@
   <view class="ring-section">
     <view class="ring-container">
       <view class="ring-bg"></view>
-      <view class="ring-fill" style="background: conic-gradient(#7ED321 0deg {{todayData.completionRate * 3.6}}deg, #F0F0F0 {{todayData.completionRate * 3.6}}deg 360deg);"></view>
+      <view class="ring-fill" style="background: conic-gradient(#2ECC71 0deg {{todayData.completionRate * 3.6}}deg, #F0F0F0 {{todayData.completionRate * 3.6}}deg 360deg);"></view>
       <view class="ring-inner">
         <text class="ring-number">{{todayData.totalSteps}}</text>
         <text class="ring-label">总步骤</text>

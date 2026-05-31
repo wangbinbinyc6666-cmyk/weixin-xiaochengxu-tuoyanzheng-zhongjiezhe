@@ -1,28 +1,29 @@
 <view class="step-card {{completed ? 'completed' : ''}} {{skipped ? 'skipped' : ''}}">
-  <view class="step-header">
-    <view class="step-icon">{{step.icon || '📋'}}</view>
-    <view class="step-content">
-      <view class="step-title">{{step.content}}</view>
+  <view class="step-row">
+    <view class="step-circle-icon {{completed ? 'done' : ''}} {{skipped ? 'skipped-icon' : ''}}"
+      style="background: {{completed ? '#2ECC71' : (skipped ? '#999999' : circleColor)}}">
+      <text wx:if="{{completed}}" class="circle-check">✓</text>
+      <text wx:elif="{{skipped}}" class="circle-skip">—</text>
+      <text wx:else class="circle-num">{{index + 1}}</text>
     </view>
-    <view class="step-badge" wx:if="{{completed}}">✓</view>
-    <view class="step-badge skip" wx:if="{{skipped}}">→</view>
+    <view class="step-info">
+      <view class="step-text-wrap">
+        <text class="step-title {{(completed || skipped) ? 'dimmed' : ''}}">{{step.content}}</text>
+        <view class="strike-line {{strikeAnimate ? 'animate' : ''}}"></view>
+      </view>
+      <text class="step-desc {{(completed || skipped) ? 'dimmed' : ''}}" wx:if="{{step.description}}">{{step.description}}</text>
+    </view>
   </view>
-  <view class="step-meta">
-    <text class="step-estimate">⏱ 预估 {{step.estimate_minutes}} 分钟</text>
-    <text wx:if="{{step.actual_minutes > 0}}" class="step-actual">实际 {{step.actual_minutes}} 分钟</text>
-  </view>
+
   <view class="step-actions" wx:if="{{!completed && !skipped}}">
-    <button class="btn-complete" bindtap="onComplete" data-index="{{index}}">
-      <text class="btn-icon">✓</text> 完成
-    </button>
-    <button class="btn-skip" bindtap="onSkip" data-index="{{index}}">
-      <text class="btn-icon">→</text> 跳过
-    </button>
+    <view class="btn-complete" bindtap="onComplete">完成</view>
+    <view class="btn-skip" bindtap="onSkip">跳过</view>
   </view>
-  <view class="step-status" wx:if="{{completed}}">
-    <text class="status-complete">✓ 已完成 · 执行力 +2 · 咖啡豆 +1</text>
+
+  <view class="step-status-text" wx:if="{{completed}}">
+    <text>✓ 已完成 · 执行力 +2 · 咖啡豆 +1</text>
   </view>
-  <view class="step-status" wx:if="{{skipped}}">
-    <text class="status-skipped">→ 已跳过</text>
+  <view class="step-status-text skipped-status" wx:if="{{skipped}}">
+    <text>— 已跳过</text>
   </view>
 </view>
